@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background</title>
+    <link rel="stylesheet" href="./background.css">
+</head>
+<body>
+    <button id="mudar-cor" class="mudar-cor">Click me!</button>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var cores = ['blue', 'red', 'brown'];
+            var indiceAtual = 0;
+
+            $('#mudar-cor').click(function() {
+                $('body').css('background-color', cores[indiceAtual]);
+                indiceAtual = (indiceAtual + 1) % cores.length;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -60,44 +60,47 @@
         <input type="text" id="rightOperand" placeholder="0">
         <input type="submit" value="Try me!" id="calculateButton">
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function isInteger(value) {
-            return /^\d+$/.test(value);
-        }
-
-        document.getElementById('calculateButton').onclick = function() {
-            var leftOperand = document.getElementById('leftOperand').value;
-            var operator = document.getElementById('operator').value;
-            var rightOperand = document.getElementById('rightOperand').value;
-
-            if (!isInteger(leftOperand) || !isInteger(rightOperand)) {
-                alert('Error :(');
-                return;
+        $(document).ready(function() {
+            function isInteger(value) {
+                return /^\d+$/.test(value);
             }
 
-            leftOperand = parseInt(leftOperand);
-            rightOperand = parseInt(rightOperand);
+            $('#calculateButton').click(function() {
+                var leftOperand = $('#leftOperand').val();
+                var operator = $('#operator').val();
+                var rightOperand = $('#rightOperand').val();
 
-            if ((operator === '/' || operator === '%') && rightOperand === 0) {
-                alert("It's over 9000!");
-                console.log("It's over 9000!");
-                return;
-            }
+                if (!isInteger(leftOperand) || !isInteger(rightOperand)) {
+                    alert('Error :(');
+                    return;
+                }
 
-            var result;
-            if (operator === '+') result = leftOperand + rightOperand;
-            if (operator === '-') result = leftOperand - rightOperand;
-            if (operator === '*') result = leftOperand * rightOperand;
-            if (operator === '/') result = leftOperand / rightOperand;
-            if (operator === '%') result = leftOperand % rightOperand;
+                leftOperand = parseInt(leftOperand);
+                rightOperand = parseInt(rightOperand);
 
-            alert('Result: ' + result);
-            console.log('Result: ' + result);
-        };
+                if ((operator === '/' || operator === '%') && rightOperand === 0) {
+                    alert("It's over 9000!");
+                    console.log("It's over 9000!");
+                    return;
+                }
 
-        setInterval(function() {
-            alert('Please, use me...');
-        }, 30000);
+                var result;
+                if (operator === '+') result = leftOperand + rightOperand;
+                if (operator === '-') result = leftOperand - rightOperand;
+                if (operator === '*') result = leftOperand * rightOperand;
+                if (operator === '/') result = leftOperand / rightOperand;
+                if (operator === '%') result = leftOperand % rightOperand;
+
+                alert('Result: ' + result);
+                console.log('Result: ' + result);
+            });
+
+            setInterval(function() {
+                alert('Please, use me...');
+            }, 30000);
+        });
     </script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+.mudar-cor {
+    background-color: #3a3434;
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+    transition: .2s ease;
+    cursor: pointer;
+}
+
+.mudar-cor:hover {
+    color: rgb(180, 180, 74);
+}
