@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Básica</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"], select, input[type="submit"] {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+        }
+
+        input[type="submit"] {
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="leftOperand" placeholder="0">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="%">%</option>
+        </select>
+        <input type="text" id="rightOperand" placeholder="0">
+        <input type="submit" value="Try me!" id="calculateButton">
+    </div>
+    <script>
+        document.getElementById('calculateButton').onclick = function() {
+            var leftOperand = parseInt(document.getElementById('leftOperand').value);
+            var operator = document.getElementById('operator').value;
+            var rightOperand = parseInt(document.getElementById('rightOperand').value);
+
+            if (isNaN(leftOperand) || isNaN(rightOperand) || leftOperand < 0 || rightOperand < 0) {
+                alert('Error :(');
+                return;
+            }
+
+            if ((operator === '/' || operator === '%') && rightOperand === 0) {
+                alert("It's over 9000!");
+                console.log("It's over 9000!");
+                return;
+            }
+
+            var result;
+            if (operator === '+') result = leftOperand + rightOperand;
+            if (operator === '-') result = leftOperand - rightOperand;
+            if (operator === '*') result = leftOperand * rightOperand;
+            if (operator === '/') result = leftOperand / rightOperand;
+            if (operator === '%') result = leftOperand % rightOperand;
+
+            alert('Result: ' + result);
+            console.log('Result: ' + result);
+        };
+
+    </script>
+</body>
+</html>

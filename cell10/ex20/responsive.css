@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+table {
+    width: 100vw;
+    height: 100vh;
+    border-collapse: collapse;
+}
+table td {
+    padding: 20px;
+
+}
+table tr td:first-child {
+    background-color: rgb(109, 70, 146);
+}
+table tr td:last-child {
+    background-color: rgb(102, 172, 172);
+}

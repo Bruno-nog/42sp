@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balloon</title>
+    <style>
+        body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.balloon {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+    </style>
+</head>
+<body>
+    <div class="balloon" id="balloon"></div>
+    <script>
+var cores = ['red', 'green', 'blue'];
+var indiceCorAtual = 0;
+var balao = document.getElementById('balloon');
+
+function mudarCor() {
+    indiceCorAtual = (indiceCorAtual + 1) % cores.length;
+    balao.style.backgroundColor = cores[indiceCorAtual];
+}
+
+function mudarCorInversa() {
+    indiceCorAtual = (indiceCorAtual - 1 + cores.length) % cores.length;
+    balao.style.backgroundColor = cores[indiceCorAtual];
+}
+
+balao.onclick = function() {
+    var tamanhoAtual = parseInt(balao.style.width) || 200;
+    var novoTamanho = tamanhoAtual + 10;
+    
+    if (novoTamanho > 420) {
+        novoTamanho = 200; 
+        balao.style.backgroundColor = 'red'; 
+        indiceCorAtual = 0; 
+    } else {
+        mudarCor();
+    }
+    
+    balao.style.width = novoTamanho + 'px';
+    balao.style.height = novoTamanho + 'px';
+};
+
+balao.onmouseout = function() {
+    var tamanhoAtual = parseInt(balao.style.width) || 200;
+    var novoTamanho = tamanhoAtual - 5;
+    
+    if (novoTamanho < 200) {
+        novoTamanho = 200;
+    } else {
+        mudarCorInversa();
+    }
+    
+    balao.style.width = novoTamanho + 'px';
+    balao.style.height = novoTamanho + 'px';
+};
+
+    </script>
+</body>
+</html>
